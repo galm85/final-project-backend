@@ -1,16 +1,19 @@
+
+
+//register a new user
 POST http://localhost:4000/users/
 Content-Type: application/json
 
 
 {
-    "firstName":"gal",
+    "firstName":"dud",
     "lastName":"mizrahi",
-    "email":"admin@admin.com",
+    "email":"dddddd@admin.com",
     "password":"123456"
 }
 
 ###
-
+/// sign in 
 POST http://localhost:4000/users/sign-in/
 Content-Type: application/json
 
@@ -19,3 +22,30 @@ Content-Type: application/json
     "email":"admin@admin.com",
     "password":"$2b$10$nWtI0UsoxKO0Sv8.MaGbROdxEhgY37YIgT/OJp8O4EJ4MSEYRb6Ei"
 }
+
+
+###
+//post a new review
+POST http://localhost:4000/review/new-review
+Content-Type: application/json
+
+
+{
+    "title":"far cry 6",
+    "img":"fdsfdsfsdf",
+    "body":"this is the body of ther game",
+    "userId":"5f771a04c075f4f55aefded2"
+}
+
+###
+//get all reviews
+GET http://localhost:4000/review/
+
+###
+///get all revies by game title
+GET http://localhost:4000/review/assassins creed valhalla
+
+
+###
+///get all reviews by user
+GET http://localhost:4000/review/id/5f771a04c075f4f55aefded2

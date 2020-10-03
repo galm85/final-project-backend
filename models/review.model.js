@@ -11,7 +11,6 @@ const reviewSchema = new mongoose.Schema({
     },
     img:{
         type:String,
-        required:true,
     },
     body:{
         type:String,
@@ -27,7 +26,7 @@ const reviewSchema = new mongoose.Schema({
     comments:Array
 });
 
-const Review = mongoose.model("Review",reviewSchema);
+const Review = mongoose.model('Review',reviewSchema);
 
 
 function validateReview(review){
@@ -41,5 +40,5 @@ function validateReview(review){
     return schema.validate(review)
 }
 
-module.Review = Review
-module.validateReview = validateReview
+exports.Review = Review
+exports.validateReview = validateReview

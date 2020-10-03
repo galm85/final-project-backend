@@ -5,7 +5,7 @@ require('dotenv').config();
 const cors = require('cors');
 
 const usersRoute = require('./routes/users.route'); 
-
+const reviewRoute = require('./routes/review.route');
 
 
 const PORT = process.env.PORT || 4000;
@@ -21,8 +21,7 @@ app.use(cors());
 app.use(express.json())
 
 app.use('/users',usersRoute);
-// app.use('/review',reviewRoute);
-
+app.use('/review',reviewRoute);
 
 app.listen(PORT,console.log(`Server is running on post:${PORT}`))
 
