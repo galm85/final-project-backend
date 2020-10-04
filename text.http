@@ -52,3 +52,13 @@ GET http://localhost:4000/review/id/5f771a04c075f4f55aefded2
 
 
 
+###
+//signin user
+POST http://localhost:4000/users/sign-in/
+Content-Type: application/json
+
+
+{
+    "email":"galm44@gmail.com",
+    "password":"12345678"
+}

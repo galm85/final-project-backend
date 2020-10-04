@@ -23,12 +23,19 @@ router.post("/", async (req,res)=>{
 //sign in
 router.post('/sign-in',async(req,res)=>{
     
-    let user = await User.findOne({email:req.body.email,password:req.body.password});
+    let user = await User.findOne({email:req.body.email});
+    
     if (!user) {
     return  res.send('Email or Password is incorrect');
     }
 
-    return res.send(user);
+    let compare = await bcrypt.compare(req.body.password, user.password);
+    
+    if(!compare){
+        return  res.send('Email or Password is incorrect');
+    }
+
+    return res.send("user ok");
 
 })
 
