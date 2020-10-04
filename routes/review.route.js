@@ -3,7 +3,7 @@ const {Review,validateReview}= require('../models/review.model');
 const {validateComment} = require('../models/comment.model');
 
 //post a new review
-router.post('/new-review',async (req,res)=>{
+router.post('/',async (req,res)=>{
     const {error} = validateReview(req.body);
     if (error) return res.send(error.details[0].message);
 
