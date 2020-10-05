@@ -12,10 +12,10 @@ const commentSchema = new mongoose.Schema({
     body:{
         type:String,
         maxlength:1024
+        
     },
     userId:{
         type:String,
-        required:true
     }
     
 })
@@ -27,7 +27,7 @@ function validateComment(comment){
     const schema = Joi.object({
         title:Joi.string().required().min(2).max(255),
         body:Joi.string().max(1024),
-        userId:Joi.string().required()
+        // userId:Joi.string().required()
     })
 
     return schema.validate(comment);

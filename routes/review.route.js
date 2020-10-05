@@ -18,17 +18,7 @@ let allReviews = await Review.find({});
 return res.send(allReviews);
 })
 
-// //get all review by game title
-// router.get('/:title',async(req,res)=>{
-//     let reviews = await Review.findOne({title:req.params.title});
-//     return res.send(reviews);
-// })
 
-// //get all review by user
-// router.get('/id/:id',async(req,res)=>{
-//     let reviews = await Review.findOne({userId:req.params.id});
-//     return res.send(reviews);
-// })
 
 
 
