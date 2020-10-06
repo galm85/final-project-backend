@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const bcrypt = require('bcrypt');
 const {User,validateUser,validateFav} = require('../models/user.model');
+const auth = require('../middlewares/auth');
 
 //register a new user account
 router.post("/", async (req,res)=>{

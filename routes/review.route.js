@@ -1,9 +1,10 @@
 const router = require('express').Router();
 const {Review,validateReview}= require('../models/review.model');
 const {validateComment} = require('../models/comment.model');
+const auth = require('../middlewares/auth');
 
 //post a new review
-router.post('/',async (req,res)=>{
+router.post('/',auth,async (req,res)=>{
     const {error} = validateReview(req.body);
     if (error) return res.send(error.details[0].message);
 
