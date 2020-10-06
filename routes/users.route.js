@@ -35,7 +35,7 @@ router.post('/sign-in',async(req,res)=>{
         return  res.sendStatus(500).send('Email or Password is incorrect');
     }
 
-    return res.send("ok");
+    return res.json({token:user.generateAuthToken()});
 
 })
 
