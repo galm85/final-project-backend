@@ -19,6 +19,10 @@ const reviewSchema = new mongoose.Schema({
         type:String,
         required:true
     },
+    author:{
+        type:String,
+        required:true
+    },
     createdAt:{ 
         type: Date,
         default: Date.now
@@ -35,6 +39,7 @@ function validateReview(review){
         img:Joi.string().required().min(2),
         body:Joi.string(),
         userId:Joi.string().required().min(2).max(64),
+        author:Joi.string().required()
     })
 
     return schema.validate(review)

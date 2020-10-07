@@ -24,7 +24,7 @@ return res.send(allReviews);
 
 
 // add a new comment to the comments Array in Review
-router.patch('/:id',async(req,res)=>{
+router.patch('/:id',auth,async(req,res)=>{
     const {error} = validateComment(req.body);
     if (error) return res.send(error.details[0].message);
 

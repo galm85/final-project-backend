@@ -27,13 +27,13 @@ router.post('/sign-in',async(req,res)=>{
     let user = await User.findOne({email:req.body.email});
     
     if (!user) {
-    return  res.sendStatus(500).send('Email or Password is incorrect');
+    return  res.status(400).send('Email or Password is incorrect');
     }
 
     let compare = await bcrypt.compare(req.body.password, user.password);
     
     if(!compare){
-        return  res.sendStatus(500).send('Email or Password is incorrect');
+        return  res.send('Email or Password is incorrect');
     }
 
     return res.json({token:user.generateAuthToken()});
