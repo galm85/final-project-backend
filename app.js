@@ -17,7 +17,9 @@ const PORT = process.env.PORT || 4000;
 mongoose.connect('mongodb://localhost:27017/VideoGamesProject',{
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    useCreateIndex:true})
+    useCreateIndex:true,
+    useFindAndModify:false
+})
     .then(console.log("Connect to mongoDB"))
     .catch(err=>{console.log(err,": No connection")})
 

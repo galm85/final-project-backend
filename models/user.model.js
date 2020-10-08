@@ -29,6 +29,10 @@ const userSchema = new mongoose.Schema({
         minlength:6,
         maxlength:255
     },
+    editor:{
+        type:Boolean,
+        
+    },
     createdAt: 
     { type: Date,
       default: Date.now
@@ -55,7 +59,7 @@ function validateUser(user){
         lastName:Joi.string().required().min(2).max(255),
         email:Joi.string().required().min(2).max(255).email(),
         password:Joi.string().required().min(2).max(255),
-
+        editor:Joi.boolean()
     });
 
     return schema.validate(user);
