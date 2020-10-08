@@ -9,7 +9,7 @@ router.post("/", async (req,res)=>{
 
  let user = await User.findOne({email:req.body.email});
  if (user) {
-    return  res.send('The email is taken already, try other email');
+    return  res.status(400).send('The email is taken already, try other email');
  
  }
  user = new User(req.body);
@@ -38,6 +38,24 @@ router.post('/sign-in',async(req,res)=>{
     return res.json({token:user.generateAuthToken()});
 
 })
+
+//update User
+router.put("/update-user", async (req,res)=>{
+    // const {error} = validateUser(req.body);
+    // if (error)  return res.send(error.details[0].message);
+   
+    let user = await User.findOneAndUpdate({_id:req.body._id},req.body);
+    if (!user) {
+       return  res.status(400).send('No user');
+    
+    }
+    res.status(200).json({token:user.generateAuthToken()});
+    
+   })
+
+
+   
+   
 
 
 
