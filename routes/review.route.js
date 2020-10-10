@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const {Review,validateReview}= require('../models/review.model');
-const {validateComment} = require('../models/comment.model');
+const {Comment,validateComment} = require('../models/comment.model');
 const auth = require('../middlewares/auth');
 
 //post a new review
@@ -8,8 +8,8 @@ router.post('/',auth,async (req,res)=>{
     const {error} = validateReview(req.body);
     if (error) return res.send(error.details[0].message);
 
- let user = new Review(req.body);
- await user.save();
+ let review = new Review(req.body);
+ await review.save();
  res.send("new review saved");
 })
 
@@ -20,16 +20,13 @@ return res.send(allReviews);
 })
 
 
-
-
-
 // add a new comment to the comments Array in Review
 router.patch('/:id',auth,async(req,res)=>{
     const {error} = validateComment(req.body);
     if (error) return res.send(error.details[0].message);
-
-
-    await Review.findOneAndUpdate({_id:req.params.id},{$push:{comments:req.body}})
+    
+    let comment = new Comment(req.body);
+    await Review.findOneAndUpdate({_id:req.params.id},{$push:{comments:comment}})
     return res.send('add new comment')
 })
 
@@ -37,6 +34,19 @@ router.patch('/:id',auth,async(req,res)=>{
 router.get('/comments/:id',async (req,res)=>{
     let review =await Review.findOne({_id:req.params.id},{comments:1})
     res.send(review)
+})
+
+
+//delete a comment in review
+
+router.patch('/comments/delete/:id',async(req,res)=>{
+    console.log(req.body._id);
+    try{
+       const a= await Review.findOneAndUpdate({_id:req.params.id},{$pull:{comments:{title:req.body.title,body:req.body.body}}});
+        res.send(a);
+    }catch(error){
+        res.send(error);
+    }
 })
 
 

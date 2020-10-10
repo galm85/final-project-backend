@@ -8,7 +8,7 @@ const cors = require('cors');
 //routes
 const usersRoute = require('./routes/users.route'); 
 const reviewsRoute = require('./routes/review.route');
-const commentsRoute = require('./routes/comments.route');
+// const commentsRoute = require('./routes/comments.route');
 
 
 const PORT = process.env.PORT || 4000;
@@ -30,7 +30,7 @@ app.use(express.json())
 
 app.use('/users',usersRoute);
 app.use('/review',reviewsRoute);
-app.use('/comments',commentsRoute);
+// app.use('/comments',commentsRoute);
 
 app.listen(PORT,console.log(`Server is running on post:${PORT}`))
 
