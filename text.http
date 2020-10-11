@@ -74,3 +74,11 @@ Content-Type: application/json
     "email":"token@email.com",
     "password":"12345678"
 }
+
+
+
+###
+//delete review
+DELETE  http://localhost:4000/review/delete/5f7aa8f86f77be5b0eee810e
+Content-Type: application/json
+

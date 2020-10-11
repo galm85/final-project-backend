@@ -30,6 +30,21 @@ router.patch('/:id',auth,async(req,res)=>{
     return res.send('add new comment')
 })
 
+//delete review
+router.delete('/delete/:id',async(req,res)=>{
+    try{
+       await Review.findOneAndRemove({_id:req.params.id});
+        res.status(200).send("Review deleted");
+    }catch(error){
+        res.status(400).send(error);
+    }
+})
+
+
+
+
+
+
 //get all the comments of a  review by id
 router.get('/comments/:id',async (req,res)=>{
     let review =await Review.findOne({_id:req.params.id},{comments:1})
@@ -43,7 +58,7 @@ router.patch('/comments/delete/:id',async(req,res)=>{
     console.log(req.body._id);
     try{
        const a= await Review.findOneAndUpdate({_id:req.params.id},{$pull:{comments:{title:req.body.title,body:req.body.body}}});
-        res.send(a);
+        res.status(200).send("Comment deleted");
     }catch(error){
         res.send(error);
     }
