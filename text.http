@@ -111,3 +111,22 @@ Content-Type: application/json
 {
     "_id":"5f7f372d9a342cb586392f91"
 }
+
+
+###
+// add to favorite from User route
+GET http://localhost:4000/users/favorite/5f7f4697e37653c015725c65
+
+
+###
+/// add to favorite from user route
+PUT  http://localhost:4000/users/favorite/5f7f4697e37653c015725c65
+Content-Type: application/json
+
+
+{
+    "title":"far cry 6",
+    "img":"fdsfdsfsdf",
+    "body":"this is the body of ther game",
+    "userId":"5f771a04c075f4f55aefded2"
+}
