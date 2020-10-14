@@ -58,7 +58,6 @@ router.post('/favorite/:userId',async (req,res)=>{
 router.get('/favorite/:userId',async (req,res)=>{
     try{
      let favs =  await User.findOne({_id:req.params.userId},{fav:1});
-     console.log(favs)
      res.status(200).send(favs);
 
         
