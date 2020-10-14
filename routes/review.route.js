@@ -54,6 +54,10 @@ router.post('/favorite/:userId',async (req,res)=>{
     }
 })
 
+
+
+
+
 //get all favorites review of a user
 router.get('/favorite/:userId',async (req,res)=>{
     try{
@@ -67,9 +71,6 @@ router.get('/favorite/:userId',async (req,res)=>{
 })
 
 
-
-
-
 //get all the comments of a  review by id
 router.get('/comments/:id',async (req,res)=>{
     let review =await Review.findOne({_id:req.params.id},{comments:1})
@@ -77,8 +78,10 @@ router.get('/comments/:id',async (req,res)=>{
 })
 
 
-//delete a comment in review
 
+
+
+//delete a comment in review
 router.patch('/comments/delete/:id',async(req,res)=>{
     console.log(req.body._id);
     try{

@@ -99,4 +99,15 @@ Content-Type: application/json
 
 ###
 ///// get all favorites by user id
-POST http://localhost:4000/review/favorite/5f817e1ad992791035389752
+GET http://localhost:4000/review/favorite/5f817e1ad992791035389752
+
+
+###
+//remove from favorites
+PUT http://localhost:4000/users/favorites/delete/5f7f4697e37653c015725c65
+Content-Type: application/json
+
+
+{
+    "_id":"5f7f372d9a342cb586392f91"
+}

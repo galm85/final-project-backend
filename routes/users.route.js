@@ -54,6 +54,15 @@ router.put("/update-user", async (req,res)=>{
    })
 
 
+
+   //remove from favor list
+   router.put('/favorites/delete/:id',async (req,res)=>{
+       let user = await User.findOneAndUpdate({_id:req.params.id},
+        {$pull:{fav:{_id:req.body._id}}})
+       res.send("ok");
+   })
+
+
    
    
 
