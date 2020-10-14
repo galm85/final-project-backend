@@ -82,3 +82,21 @@ Content-Type: application/json
 DELETE  http://localhost:4000/review/delete/5f7aa8f86f77be5b0eee810e
 Content-Type: application/json
 
+
+###
+/// add to favorite
+POST http://localhost:4000/review/favorite/5f817e1ad992791035389752
+Content-Type: application/json
+
+
+{
+    "title":"far cry 6",
+    "img":"fdsfdsfsdf",
+    "body":"this is the body of ther game",
+    "userId":"5f771a04c075f4f55aefded2"
+}
+
+
+###
+///// get all favorites by user id
+POST http://localhost:4000/review/favorite/5f817e1ad992791035389752

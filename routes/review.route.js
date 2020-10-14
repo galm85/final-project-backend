@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const {Review,validateReview}= require('../models/review.model');
 const {Comment,validateComment} = require('../models/comment.model');
+const {User} = require('../models/user.model');
 const auth = require('../middlewares/auth');
 
 //post a new review
@@ -40,6 +41,31 @@ router.delete('/delete/:id',async(req,res)=>{
     }
 })
 
+//add to favorite
+router.post('/favorite/:userId',async (req,res)=>{
+    try {
+       let user = await User.findOneAndUpdate({_id:req.params.userId},{$push:{fav:req.body}});
+       res.status(200).send(user);
+        
+    }
+    catch(error){
+        console.log(error);
+        res.status(400).send('not ok')
+    }
+})
+
+//get all favorites review of a user
+router.get('/favorite/:userId',async (req,res)=>{
+    try{
+     let favs =  await User.findOne({_id:req.params.userId},{fav:1});
+     console.log(favs)
+     res.status(200).send(favs);
+
+        
+    }catch(error){
+        res.status(400).send(error);
+    }
+})
 
 
 
