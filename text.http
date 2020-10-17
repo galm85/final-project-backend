@@ -130,3 +130,9 @@ Content-Type: application/json
     "body":"this is the body of ther game",
     "userId":"5f771a04c075f4f55aefded2"
 }
+
+
+###
+//get review by title
+GET http://localhost:4000/review/as
+Content-Type: application/json

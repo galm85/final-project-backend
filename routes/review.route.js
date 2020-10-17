@@ -20,6 +20,17 @@ let allReviews = await Review.find({});
 return res.send(allReviews);
 })
 
+//get review by title
+router.get('/:title',async(req,res)=>{
+    // let allReviews = await Review.find({title:{$regex:req.params.title}})
+    let allReviews = await Review.find({});
+    let filtered = allReviews.filter(item => item.title.toLowerCase().includes(req.params.title.toLowerCase()));
+    
+   return res.send(filtered);
+    
+    
+})
+//({"username" : {$regex : ".*son.*"}});
 
 // add a new comment to the comments Array in Review
 router.patch('/:id',auth,async(req,res)=>{
