@@ -14,6 +14,14 @@ router.post('/',auth,async (req,res)=>{
  res.send("new review saved");
 })
 
+//edit a review
+router.put("/edit-review", async (req,res)=>{
+    let review = await Review.findOneAndUpdate({_id:req.body._id},req.body);
+
+    res.status(200).send(review);
+    
+   })
+
 //get all review
 router.get('/',async(req,res)=>{
 let allReviews = await Review.find({});
@@ -40,7 +48,6 @@ router.get('/review/:id',async(req,res)=>{
     
     
 })
-//({"username" : {$regex : ".*son.*"}});
 
 // add a new comment to the comments Array in Review
 router.patch('/:id',auth,async(req,res)=>{

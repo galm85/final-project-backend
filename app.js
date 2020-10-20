@@ -30,7 +30,6 @@ app.use(express.json())
 
 app.use('/users',usersRoute);
 app.use('/review',reviewsRoute);
-// app.use('/comments',commentsRoute);
 
 app.listen(PORT,console.log(`Server is running on post:${PORT}`))
 
