@@ -42,9 +42,6 @@ router.post('/sign-in',async(req,res)=>{
 
 //edit User
 router.put("/update-user", async (req,res)=>{
-    const {error} = validateUser(req.body);
-    if (error)  return res.send(error.details[0].message);
-   
     let user = await User.findOneAndUpdate({_id:req.body._id},req.body);
     if (!user) {
        return  res.status(400).send('No user');

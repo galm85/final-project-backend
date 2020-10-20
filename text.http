@@ -25,6 +25,19 @@ Content-Type: application/json
 
 
 ###
+/// edit User
+PUT   http://localhost:4000/users/update-user
+Content-Type: application/json
+
+{
+    "_id":"5f7f4697e37653c015725c65",
+    "firstName":"admin"
+}
+
+
+
+
+###
 //post a new review
 POST http://localhost:4000/review/new-review
 Content-Type: application/json
