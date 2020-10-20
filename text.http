@@ -136,3 +136,9 @@ Content-Type: application/json
 //get review by title
 GET http://localhost:4000/review/as
 Content-Type: application/json
+
+
+###
+//get review by id
+GET http://localhost:4000/review/review/5f8682347b11c899ca8a117b
+Content-Type: application/json

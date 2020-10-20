@@ -30,6 +30,16 @@ router.get('/:title',async(req,res)=>{
     
     
 })
+
+//get review by id
+router.get('/review/:id',async(req,res)=>{
+    
+    let review = await Review.findOne({_id:req.params.id});
+    
+   return res.send(review);
+    
+    
+})
 //({"username" : {$regex : ".*son.*"}});
 
 // add a new comment to the comments Array in Review
