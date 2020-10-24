@@ -69,18 +69,7 @@ router.delete('/delete/:id',async(req,res)=>{
     }
 })
 
-//add to favorite
-router.post('/favorite/:userId',async (req,res)=>{
-    try {
-       let user = await User.findOneAndUpdate({_id:req.params.userId},{$push:{fav:req.body}});
-       res.status(200).send(user);
-        
-    }
-    catch(error){
-        console.log(error);
-        res.status(400).send('not ok')
-    }
-})
+
 
 
 
@@ -111,9 +100,8 @@ router.get('/comments/:id',async (req,res)=>{
 
 //delete a comment in review
 router.patch('/comments/delete/:id',async(req,res)=>{
-    console.log(req.body._id);
     try{
-       const a= await Review.findOneAndUpdate({_id:req.params.id},{$pull:{comments:{title:req.body.title,body:req.body.body}}});
+       await Review.findOneAndUpdate({_id:req.params.id},{$pull:{comments:{title:req.body.title,body:req.body.body}}});
         res.status(200).send("Comment deleted");
     }catch(error){
         res.send(error);

@@ -69,14 +69,22 @@ router.get('/favorite/:userId',async (req,res)=>{
 
 //add to review to the user's favorite list
 router.put('/favorite/:userId',async (req,res)=>{
+
+    
+    
+    
     try {
-       let user = await User.findOneAndUpdate({_id:req.params.userId},{$push:{fav:req.body}});
-       res.status(200).send("user");
+        let user= await User.findOne({_id:req.params.userId});
+        for(let fav of user.fav){
+            if(fav._id === req.body._id){
+              return  res.send(`${req.body.title} is already in your favorites`);  
+        }}
+        user = await User.findOneAndUpdate({_id:req.params.userId},{$push:{fav:req.body}});
+       res.status(200).send(`${req.body.title} has been added to your favorites`);
         
     }
     catch(error){
-        console.log(error);
-        res.status(400).send('not ok')
+        res.status(400).send(error)
     }
 })
 
