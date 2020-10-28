@@ -8,7 +8,6 @@ const cors = require('cors');
 //routes
 const usersRoute = require('./routes/users.route'); 
 const reviewsRoute = require('./routes/review.route');
-// const commentsRoute = require('./routes/comments.route');
 
 //mongodb://localhost:27017/VideoGamesProject
 const PORT = process.env.PORT || 4000;
