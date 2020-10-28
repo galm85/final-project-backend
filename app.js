@@ -10,11 +10,10 @@ const usersRoute = require('./routes/users.route');
 const reviewsRoute = require('./routes/review.route');
 // const commentsRoute = require('./routes/comments.route');
 
-
+//mongodb://localhost:27017/VideoGamesProject
 const PORT = process.env.PORT || 4000;
-
 //mongoDB connection
-mongoose.connect('mongodb://localhost:27017/VideoGamesProject',{
+mongoose.connect('mongodb+srv://gal:1234@myrestapi.creen.mongodb.net/VideoGamesProject?retryWrites=true&w=majority',{
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex:true,
